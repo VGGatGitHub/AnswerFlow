@@ -105,8 +105,6 @@ print(tf.__version__)
 
 import tensorflow as tf
 
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 from sklearn.model_selection import train_test_split
 
 import unicodedata
@@ -467,16 +465,26 @@ print('BATCH_SIZE:{}, total training time {:.2f} minutes for {} epochs, final to
     BATCH_SIZE,(time.time() - training_start_time)/60,epoch+1,total_loss))
 
 # function for plotting the attention weights
-def plot_attention(attention, sentence, predicted_sentence):
-    fig = plt.figure(figsize=(10,10))
-    ax = fig.add_subplot(1, 1, 1)
-    ax.matshow(attention, cmap='viridis')
-    fontdict = {'fontsize': 14}
-    ax.set_xticklabels([''] + sentence, fontdict=fontdict, rotation=90)
-    ax.set_yticklabels([''] + predicted_sentence, fontdict=fontdict)
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
-    plt.show()
+try:
+  
+  import matplotlib.pyplot as plt
+  import matplotlib.ticker as ticker
+
+  def plot_attention(attention, sentence, predicted_sentence):
+      fig = plt.figure(figsize=(10,10))
+      ax = fig.add_subplot(1, 1, 1)
+      ax.matshow(attention, cmap='viridis')
+      fontdict = {'fontsize': 14}
+      ax.set_xticklabels([''] + sentence, fontdict=fontdict, rotation=90)
+      ax.set_yticklabels([''] + predicted_sentence, fontdict=fontdict)
+      ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+      ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+      plt.show()
+      
+except Exception:
+  pass
+
+
 
 def ask(sentence):
     result, sentence1, attention_plot = evaluate(sentence)
