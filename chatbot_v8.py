@@ -21,6 +21,9 @@ V7: using similarity function to assess the new answers
 V8: modified the geting of the training data file
 """
 
+# Commented out IPython magic to ensure Python compatibility.
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 #VGG in case of using a Google Drive for your files
 #from google.colab import drive
 #drive.mount('/content/drive')
@@ -86,20 +89,19 @@ for dirname, _, filenames in os.walk(path):
 
 #VGG The cell has been removed since now the data is analized in the jsonl2json.ipynb
 
-# Commented out IPython magic to ensure Python compatibility.
-from __future__ import absolute_import, division, print_function, unicode_literals
 
 # Install TensorFlow
 try:
   # %tensorflow_version only exists in Colab.
-#   %tensorflow_version 2.x
+  # %tensorflow_version 2.x
+  print("TensorFlow 2.x is needed!")
 except Exception:
-  pass
+    pass
 
 import tensorflow as tf
 print(tf.__version__)
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+#from __future__ import absolute_import, division, print_function, unicode_literals
 
 import tensorflow as tf
 
@@ -573,7 +575,7 @@ if n_answers >0:
 if n_smlr >0:
   print("There were {} similar answers with  similarity above {}%\n".format(n_smlr,smlrty_cut))
 
-print("Long Answer training results:")
+#print("Long Answer training results:")
 print("\n{} answers out of {} possible, rate is {:.0f}%".format(n_answers,len(source),100*n_answers/len(source)))
 if n_answers >0:
   print("At least {} correct answers out of {} possible, rate is {:.0f}%".format(n_correct,n_answers,100*n_correct/n_answers))
