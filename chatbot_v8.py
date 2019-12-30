@@ -519,7 +519,7 @@ try:
   import spacy.cli
   spacy.cli.download("en_core_web_md")
 except Exception:
-    print("try to do sudo python -m spacy download en_core_web_sm")
+    print("try to do sudo python3 -m spacy download en_core_web_md")
 
 import spacy as sp
 nlp = sp.load("en_core_web_md")
