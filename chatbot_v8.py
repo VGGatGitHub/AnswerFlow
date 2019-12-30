@@ -481,6 +481,11 @@ try:
       ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
       plt.show()
       
+  def show_attention_plot(sentence):
+      result, sentence1, attention_plot = evaluate(sentence)
+      attention_plot = attention_plot[:len(result.split(' ')), :len(sentence.split(' '))]
+      plot_attention(attention_plot, sentence.split(' '), result.split(' '))
+      
 except Exception:
   pass
 
@@ -492,10 +497,6 @@ def ask(sentence):
     print('Predicted answer: {}'.format(result))
     return result
 
-def show_attention_plot(sentence):
-  result, sentence1, attention_plot = evaluate(sentence)
-  attention_plot = attention_plot[:len(result.split(' ')), :len(sentence.split(' '))]
-  plot_attention(attention_plot, sentence.split(' '), result.split(' '))
 
 def is_it_known(sentence):
     result, sentence, attention_plot = evaluate(sentence)
@@ -507,9 +508,11 @@ ask('most common use of opt-in e-mail marketing')
 ask('how did I meet your mother')
 ask('who is your mother');
 
-show_attention_plot("which is the most common use of opt in e mail marketing")
-
-show_attention_plot("who plays young flo in the progressive commercials")
+try:
+  show_attention_plot("which is the most common use of opt in e mail marketing")
+  show_attention_plot("who plays young flo in the progressive commercials")
+except Exception:
+  pass
 
 import spacy.cli
 spacy.cli.download("en_core_web_md")
