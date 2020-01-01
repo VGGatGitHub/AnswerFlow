@@ -16,3 +16,12 @@ question: when did star trek the next generation first air
 answer: september 28 , 1987
 
 The training data is in English but the chatbot can work with other languages by feeding it question-answer pairs in another language. The model does not need to know word meanings or use linguistic features like word stems, parts-of-speech, or stop words.
+
+
+## Installation
+
+Local installation on a virtual environment is highly recommended.
+
+```
+pip install -r requirements.txt
+```
